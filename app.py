@@ -1,11 +1,11 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="frontend")
 
 @app.route("/")
 def home():
-    return "Hospital Queue System Running 🚀"
+    return send_from_directory("frontend", "index.html")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
